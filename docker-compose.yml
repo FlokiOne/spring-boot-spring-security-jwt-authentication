@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  #PostgreSQL Database for the application
+  joitin-postgres:
+    image: postgis/postgis:latest
+    #    build:
+    #      context: ./docker
+    #      dockerfile: db.Dockerfile
+    restart: always
+    container_name: joitin-postgres
+    ports:
+      - 5432:5432 # Forward the exposed port 5432 on the container to port 5432 on the host machine
+    #Environment variable for DB name, user and password
+    environment:
+      - POSTGRES_DB=joitin
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - TZ=UTC
